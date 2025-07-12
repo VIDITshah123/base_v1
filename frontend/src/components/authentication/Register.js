@@ -19,6 +19,9 @@ const Register = () => {
       .required('First name is required'),
     lastName: Yup.string()
       .required('Last name is required'),
+    mobileNumber: Yup.string()
+      .required('Mobile number is required')
+      .matches(/^[0-9]{10}$/, 'Mobile number must be 10 digits'),
     email: Yup.string()
       .email('Invalid email address')
       .required('Email is required'),
@@ -43,6 +46,7 @@ const Register = () => {
       const userData = {
         first_name: values.firstName,
         last_name: values.lastName,
+        mobile_number: values.mobileNumber,
         email: values.email,
         password: values.password,
       };
@@ -85,6 +89,7 @@ const Register = () => {
                   initialValues={{
                     firstName: '',
                     lastName: '',
+                    mobileNumber: '',
                     email: '',
                     password: '',
                     confirmPassword: ''
@@ -144,6 +149,29 @@ const Register = () => {
                           </Form.Group>
                         </Col>
                       </Row>
+                      
+                      <Form.Group className="mb-3" controlId="mobileNumber">
+                        <Form.Label>Mobile Number</Form.Label>
+                        <div className="input-group">
+                          <span className="input-group-text">+1</span>
+                          <Form.Control
+                            type="tel"
+                            name="mobileNumber"
+                            value={values.mobileNumber}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            isInvalid={touched.mobileNumber && !!errors.mobileNumber}
+                            placeholder="Enter your 10-digit mobile number"
+                            maxLength="10"
+                          />
+                        </div>
+                        <Form.Text className="text-muted">
+                          We'll never share your mobile number with anyone else.
+                        </Form.Text>
+                        <Form.Control.Feedback type="invalid">
+                          {errors.mobileNumber}
+                        </Form.Control.Feedback>
+                      </Form.Group>
                       
                       <Form.Group className="mb-3">
                         <Form.Label>

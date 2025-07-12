@@ -109,8 +109,7 @@ moduleNames.forEach(moduleName => {
 });
 
 // --- Feature Toggle API ---
-const jwt = require('jsonwebtoken');
-
+//const jwt = require('jsonwebtoken');
 function requireAdminOrFullAccess(req, res, next) {
   const authHeader = req.headers['authorization'];
   if (!authHeader) return res.status(401).json({ error: 'Missing auth header' });
