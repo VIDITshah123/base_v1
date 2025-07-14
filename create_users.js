@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const bcrypt = require('bcryptjs');
 
-// Connect to the SQLite database
+// Connect to the SQLite databaseee
 const db = new sqlite3.Database('./db/employdex-base.db', (err) => {
   if (err) {
     console.error('Error connecting to the database:', err.message);
